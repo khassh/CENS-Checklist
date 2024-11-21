@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CENS Checklist</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f9f9f9;
+      color: #333;
+    }
+    header {
+      background-color: #007BFF;
+      color: #fff;
+      padding: 5px;
+      text-align: center;
+      font-size: 16px;
+    }
+    .progress-container {
+      background-color: #e0e0e0;
+      height: 10px;
+      margin: 0;
+    }
+    .progress-bar {
+      height: 100%;
+      background-color: #28a745;
+      width: 0;
+      transition: width 0.3s ease-in-out;
+    }
+    main {
+      max-width: 900px;
+      margin: 10px auto;
+      padding: 10px;
+      background: #fff;
+      border-radius: 4px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      display: flex;
+      justify-content: space-between;
+    }
+    section {
+      width: 48%;
+    }
+    h2 {
+      font-size: 14px;
+      color: #007BFF;
+      margin: 5px 0;
+      text-align: center;
+    }
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    ul li {
+      padding: 5px;
+      border-bottom: 1px solid #ddd;
+      font-size: 12px;
+      display: flex;
+      align-items: center;
+    }
+    ul li:last-child {
+      border-bottom: none;
+    }
+    .checkbox-label {
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+    }
+    .checkbox-label input[type="checkbox"] {
+      margin-right: 5px;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>CENS Checklist</h1>
+</header>
+
+<div class="progress-container">
+  <div class="progress-bar" id="progress-bar"></div>
+</div>
+
+<main>
+  <section>
+    <h2>Front-end Tasks</h2>
+    <ul>
+      <li><label class="checkbox-label"><input type="checkbox" class="task-checkbox"> Greet & explain process</label></li>
+      <li><label class="checkbox-label"><input type="checkbox" class="task-checkbox"> Confirm LA County residency</label></li>
+      <li><label class="checkbox-label"><input type="checkbox" class="task-checkbox"> Identify insurance/Medi-Cal</label></li>
+      <li><label class="checkbox-label"><input type="checkbox" class="task-checkbox"> Create PCNX Record</label></li>
+      <li><label class="checkbox-label"><input type="checkbox" class="task-checkbox"> Review SAPC Consent info</label></li>
+      <li><label class="checkbox-label"><input type="checkbox" class="task-checkbox"> Administer ASAM screening</label></li>
+      <li><label class="checkbox-label"><input type="checkbox" class="task-checkbox"> Linkage (SBAT)</label></li>
+      <li><label class="checkbox-label"><input type="checkbox" class="task-checkbox"> Obtain PHI consent</label></li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Back-end Tasks</h2>
+    <ul>
+      <li><label class="checkbox-label"><input type="checkbox" class="task-checkbox"> Service Connections Log</label></li>
+      <li><label class="checkbox-label"><input type="checkbox" class="task-checkbox"> MAR Entry</label></li>
+      <li><label class="checkbox-label"><input type="checkbox" class="task-checkbox"> Internal tracking</label></li>
+      <li><label class="checkbox-label"><input type="checkbox" class="task-checkbox"> Medi-Cal issue date </label></li>
+      <li><label class="checkbox-label"><input type="checkbox" class="task-checkbox"> PCNX Financial eligibility</label></li>
+      <li><label class="checkbox-label"><input type="checkbox" class="task-checkbox"> Real-time 270</label></li>
+      <li><label class="checkbox-label"><input type="checkbox" class="task-checkbox"> PCNX Diagnosis</label></li>
+      <li><label class="checkbox-label"><input type="checkbox" class="task-checkbox"> Add/edit Exym record</label></li>
+      <li><label class="checkbox-label"><input type="checkbox" class="task-checkbox"> Specify payer settings</label></li>
+      <li><label class="checkbox-label"><input type="checkbox" class="task-checkbox"> Complete client profile</label></li>
+      <li><label class="checkbox-label"><input type="checkbox" class="task-checkbox"> Create Episode</label></li>
+      <li><label class="checkbox-label"><input type="checkbox" class="task-checkbox"> Progress Notes</label></li>
+      <li><label class="checkbox-label"><input type="checkbox" class="task-checkbox"> Exym Diagnosis</label></li>
+      <li><label class="checkbox-label"><input type="checkbox" class="task-checkbox"> Update CENS RS Client Tracking Log</label></li>
+    </ul>
+  </section>
+</main>
+
+<script>
+  const progressBar = document.getElementById("progress-bar");
+  const checkboxes = document.querySelectorAll(".task-checkbox");
+
+  function updateProgress() {
+    const totalTasks = checkboxes.length;
+    const completedTasks = document.querySelectorAll(".task-checkbox:checked").length;
+    const progressPercentage = (completedTasks / totalTasks) * 100;
+    progressBar.style.width = progressPercentage + "%";
+  }
+
+  checkboxes.forEach(checkbox => {
+    checkbox.addEventListener("change", updateProgress);
+  });
+</script>
+
+</body>
+</html>
